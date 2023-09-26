@@ -38,7 +38,6 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-@Preview(showSystemUi = true)
 @Composable
 fun SwitchMinimalExample() {
     var checked by remember { mutableStateOf(true) }
@@ -59,6 +58,27 @@ fun SwitchMinimalExample() {
         } else {
             null
         }
+    )
+}
+
+@Preview(showSystemUi = true)
+@Composable
+fun SwitchWithCustomColors() {
+    var checked by remember {
+        mutableStateOf(true)
+    }
+
+    Switch(
+        checked = checked,
+        onCheckedChange = {
+            checked = it
+        },
+        colors = SwitchDefaults.colors(
+            checkedThumbColor = MaterialTheme.colorScheme.primary,
+            checkedTrackColor = MaterialTheme.colorScheme.primaryContainer,
+            uncheckedThumbColor = MaterialTheme.colorScheme.secondary,
+            uncheckedTrackColor = MaterialTheme.colorScheme.secondaryContainer,
+        )
     )
 }
 
