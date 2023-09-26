@@ -4,9 +4,14 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.size
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Check
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Switch
+import androidx.compose.material3.SwitchDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -42,6 +47,17 @@ fun SwitchMinimalExample() {
         checked = checked,
         onCheckedChange = {
             checked = it
+        },
+        thumbContent = if (checked) {
+            {
+                Icon(
+                    imageVector = Icons.Filled.Check,
+                    contentDescription = null,
+                    modifier = Modifier.size(SwitchDefaults.IconSize)
+                )
+            }
+        } else {
+            null
         }
     )
 }
